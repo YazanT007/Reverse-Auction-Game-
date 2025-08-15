@@ -142,7 +142,6 @@ window.onload = function () {
 
 }
 
-
 window.restartGame = function () {
     location.reload();
 }
