@@ -1,0 +1,56 @@
+html, body {
+    height: 100%;
+    margin: 0;
+}
+
+body{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    font-family: 'Courier New', Courier, monospace; 
+    background-image: url(../zimages/webBackground.jpg); 
+    background-size: cover;
+    background-position: center; 
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    margin: 0; 
+    transform: scale(0.9);   
+    transform-origin: top center;
+}
+
+h1{
+    font-size: 4rem;
+    text-shadow: 3px 3px 20px #4ce3d2;
+    color: #4ce3d2
+}
+
+p{
+    color: white;
+    margin: 15px 260px 0px 260px;
+    font-size: 1.3rem;
+}
+
+#question{
+    margin-bottom: 40px;
+}
+
+#startButton{
+    font-family: 'Courier New', Courier, monospace;
+    width: auto;
+    text-shadow: 3px 3px 20px #4ce3d2;
+    font-size: 2rem;
+    padding: 8px 27px;
+    cursor: pointer;
+    border: solid 3px #4ce3d2;
+    background-color: #fefefe00;
+    transition: background-color 0.2s ease;
+    font-weight: bold;
+    color: rgb(250, 250, 250);
+}
+
+#startButton:hover{
+    background-color: #52d7c75b;
+}

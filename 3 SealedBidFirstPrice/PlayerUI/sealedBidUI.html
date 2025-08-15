@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sealed-Bid First-Price Auction</title>
+    <link rel="stylesheet" href="sealedBidUI.css">
+</head>
+<body>
+    <h1 id="title"></h1>
+    <div class="auction-info-to-know">
+        <div class="auction-info">
+            <h2>Auction Information</h2>
+            <p id="auction-cost"></p>
+            <p id="auction-suppliers"></p>
+        </div>
+
+        <div class="auction-info">
+            <h2>For you to know</h2>
+            <p id="important-information"></p>
+        </div>
+    </div>
+    <!-- <div class="scenario">
+        <h2>Scenario</h2>
+        <p id="auction-scenario"></p>
+    </div> -->
+
+    <div class="auction-container">
+        <div class="reputation-container" id="reputation-container" style="display: none;">
+            <label for="reputation-bar" id="buyerReputaion">Buyer Reputation</label>
+            <div class="reputation-bar" id="reputation-bar">
+                <div class="reputation-fill" id="reputationFill"></div>
+            </div>
+        </div>
+
+        <div class="player-bid-section">
+            <label for="player-bid">Enter Your Bid:</label><br>
+            <input type="number" id="player-bid" min="1" step="1" placeholder="Enter bid amount">
+            <button id="submit-bid" class="btns" onclick="submitBid()">Submit Bid</button>
+            <button id="withdraw" class="btns" onclick="withdraw()">Withdraw</button>
+            <p id="errMsg"></p><hr>
+        </div>
+        
+        <div class="AI-bid-section">
+            <h2>Suppliers:</h2>
+            <div id="AI-bidding-section"></div>
+        </div>
+
+        <hr>
+
+        <div class="AuctionResult">
+            <h2>Auction Result:</h2>
+            <p id="result-text">The auction result will be displayed here once all suppliers have submitted their bids.</p>
+            <p id="AIWins"></p>
+            <p id="profit"></p>
+        </div>
+
+        <hr>
+
+        <div class="players-buttons">
+            <button class="btns" onclick="restartGame()">Restart Auction</button>
+            <a href="../../2 gameSelection/gameSelection.html" button class="btns">Change Game Mode</button></a>
+            <a href="../Levels/levels.html" button class="btns">Change Level Difficulty</button></a>
+            <button class="btns" onclick="window.location.href='gameResults.html'">Previous Auctions</button>
+        </div>
+    </div>
+    <script src="sealedBidUI.js"></script>
+</body>
+</html>

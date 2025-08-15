@@ -1,0 +1,117 @@
+body{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    margin-bottom: 40px;
+    display: flex;
+    justify-content: center;  
+    align-items: center;      
+    flex-direction: column;
+    height: 100vh;
+    font-family: 'Courier New', Courier, monospace; 
+    background-image: url(../../zimages/webBackground.jpg); 
+    background-size: cover;
+    background-position: center; 
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    margin: 0; 
+    transform: scale(0.9);   
+    transform-origin: top center;
+    overflow-y: scroll;
+}
+
+h1{
+    text-align: center;
+    font-size: 2.5rem;
+    text-shadow: 3px 3px 20px rgb(173, 173, 173);
+    color: white;
+    margin-bottom: 12px;
+}
+
+a{
+    text-decoration: none;  
+    color: black;
+}
+
+.back-btn{
+    margin-right: auto;
+    margin-left: 60px;
+    margin-top: 40px;
+}
+
+#backBtn{
+    text-decoration:none;
+    width: auto;
+    border-radius: 8px;
+    border: solid 1px;
+    padding: 1px 20px;
+    cursor: pointer;
+    border: solid 1px black;
+    background: linear-gradient( #ffffff, #41c2b3 , rgba(7, 70, 61, 0.905));
+    transition: background-color 0.2s ease;
+    font-size: 15px;
+    font-weight: bold;
+    color: black;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+#backBtn:hover{
+    background: linear-gradient( #f1f0f0, #299185 , rgba(4, 51, 44, 0.905));
+}
+
+img{
+    width: 30px;
+    height: 30px;
+}
+
+.levels-container{
+    display: flex;
+    justify-content: center;
+}
+
+.levels{
+    display: flex;
+    position: relative;
+    justify-content: center;
+    align-items:center;
+    text-align: center;
+    font-size: 1.9rem;
+    width: 270px;
+    height: 560px;
+    border: 2px solid black;
+    border-radius: 10px;
+    padding: 10px;
+    margin: 0px 10px;
+    cursor: pointer;
+    font-weight: bold;
+    background: linear-gradient( #ffffff, #41c2b3 , rgba(7, 70, 61, 0.905));
+}
+
+.levels-text{
+    transform: translateY(-220%);
+    transition: font-size 0.25s ease-in-out;
+}
+
+.level-description{
+    margin-top: 120px;
+    margin-left: 10px;
+    margin-right: 10px;
+    font-size: 1.04rem;
+    opacity: 0;
+    transform: translateY(100%);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+    position: absolute;
+    text-align: center;
+    word-spacing: normal;
+    line-height: 1.6;
+    font-weight:500;
+    color: white;
+    
+}
+
+.levels:hover .levels-text{
+    font-size: 2.2rem;
+}
+
+.levels:hover .level-description{
+    opacity: 1;
+    transform: translateY(0);
+}
