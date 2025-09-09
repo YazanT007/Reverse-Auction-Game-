@@ -271,33 +271,59 @@ for (let i = 0; i < suppliers; i++) {
         let validBids = AIBids.filter(bid => bid !== undefined);
         let lowestAIBid = Math.min(...validBids);
         let winningSupplier = AIBids.indexOf(lowestAIBid) + 1;
-
+        let finalWinner;
+        let finalProfit;
+        let playerBidding;
 
         if(playerWithdrew || playerBid === null){
             result.textContent = "You Withdrew From the Auction ❌";
             AIresult.textContent = `Supplier ${winningSupplier} Won With a Bid of $${lowestAIBid}`;
-            profit.textContent = `Your profit: $0`;
+            finalWinner = `Supplier${winningSupplier}`;
+            finalProfit = 0;
         }
 
         else if (playerBid < cost) {
             result.textContent = "You Won the Contract ✅";
             AIresult.textContent = "But You Lost Profit ❌"
-            profit.textContent = `Your profit: $${playerBid - cost}`;
+            finalWinner = "Player";
+            finalProfit = playerBid - cost;
         }
         else if (playerBid < lowestAIBid) {
             result.textContent = "You Won the Contract ✅";
             AIresult.textContent = `You outbid Supplier ${winningSupplier}`;
-            profit.textContent = `Your profit: $${playerBid - cost}`;
-        
+            finalWinner = "Player";
+            finalProfit = playerBid - cost;
         } 
         
         else {
             result.textContent = "You Lost the Contract ❌";
             AIresult.textContent = `Supplier ${winningSupplier} Won With a Bid of $${lowestAIBid}`;
-            profit.textContent = `Your profit: $0`;
+            finalWinner = `Supplier ${winningSupplier}`;
+            finalProfit = 0;
         }
-
+        profit.textContent = `Your Profit: $${finalProfit}`;
         submitBtn.disabled = true;
+
+        // Store game results
+        const gameResult = {
+            gameNumber: Date.now(), // temporary unique number
+            playerBid: playerBid,
+            lowestBid: Math.min(...AIBids, playerBid),
+            winner: finalWinner,
+            profit: finalProfit,
+            gameMode: "Sealed Bid First Price",
+            levelDifficulty: "Hard"
+        };
+
+        // Send result to backend
+        fetch("http://localhost:5000/api/games/save-result", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(gameResult)
+        })
+            .then(res => res.json())
+            .then(data => console.log("Game saved:", data))
+            .catch(err => console.error("Error saving game:", err));
     }
 
 }

@@ -1,6 +1,6 @@
 window.onload = function () {
     const cost = Math.floor(Math.random() * 40) + 70;
-    const suppliers = Math.floor(Math.random() * 6) + 8; 
+    const suppliers = Math.floor(Math.random() * 6) + 4;
 
     const reputation = Math.floor(Math.random() * 69) + 30;
     updateReputationMeter(reputation);
@@ -19,7 +19,7 @@ window.onload = function () {
     const importantInfo = document.getElementById("important-information");
 
     if (reputation >= 70) {
-    importantInfo.textContent = `The buyer's reputation is ${reputation}%. 
+        importantInfo.textContent = `The buyer's reputation is ${reputation}%. 
     Suppliers are highly motivated and will bid competitively, sensing strong value and trust in the buyer. Bid Carefully`;
     }
     else if (reputation >= 45) {
@@ -52,13 +52,13 @@ window.onload = function () {
     SupplierElements.forEach((el, i) => {
         const span = el.querySelector(".dots");
         let dotCount = 1;
-    
+
         const interval = setInterval(() => {
             dotCount = (dotCount % 3) + 1;
-            const dots = ".".repeat(dotCount).padEnd(3, "\u00A0"); 
+            const dots = ".".repeat(dotCount).padEnd(3, "\u00A0");
             span.textContent = dots;
         }, 500);
-    
+
         dotIntervals.push(interval);
     });
 
@@ -86,12 +86,12 @@ window.onload = function () {
 
         let threshold;
         const minNextBid = currentBid - Math.floor(Math.random() * 3) - 5;
-        
-        if(reputation >= 70){
+
+        if (reputation >= 70) {
             threshold = cost + Math.floor(Math.random() * 6) + 9;
         }
 
-        else if(reputation >= 45){
+        else if (reputation >= 45) {
             threshold = cost + Math.floor(Math.random() * 6) + 15;
         }
 
@@ -100,7 +100,7 @@ window.onload = function () {
         }
 
         if (minNextBid <= threshold) {
-            
+
             document.getElementById(`ai-status-${index}`).textContent = `Supplier ${index + 1} withdrew.`;
             activeSuppliers[index] = false;
 
@@ -108,7 +108,7 @@ window.onload = function () {
             supplierBids[index] = minNextBid;
             currentBid = minNextBid;
             lastBidder = `Supplier ${index + 1}`;
-            lastSupplierIndex = index; 
+            lastSupplierIndex = index;
             document.getElementById(`ai-status-${index}`).textContent = `Supplier ${index + 1} bids $${minNextBid}`;
         }
 
@@ -118,9 +118,9 @@ window.onload = function () {
 
     window.submitBid = function () {
         // No bidding if withdrawn
-        if (playerWithdrew){
+        if (playerWithdrew) {
             return;
-        } 
+        }
 
         errMsg.textContent = "";
         const bid = parseInt(playerBidInput.value);
@@ -152,7 +152,7 @@ window.onload = function () {
         submitBtn.disabled = true;
         withdrawBtn.disabled = true;
 
-        if(currentBid === null){
+        if (currentBid === null) {
             currentBid = cost + 150;
         }
 
@@ -163,9 +163,11 @@ window.onload = function () {
         withdrawBtn.disabled = true;
         submitBtn.disabled = true;
         playerBidInput.disabled = true;
+        let finalWinner;
+        let finalProfit;
+        let playerBid = 0;
 
         if (playerWithdrew) {
-
             SupplierElements.forEach((el, i) => {
                 if (i === lastSupplierIndex) {
                     el.textContent = `Supplier ${i + 1} bids $${supplierBids[i]}`;
@@ -174,49 +176,76 @@ window.onload = function () {
                 }
             });
 
-    
             if (lastSupplierIndex !== null && supplierBids[lastSupplierIndex] !== null) {
                 result.textContent = `You withdrew ❌`;
                 AIresult.textContent = `Supplier ${lastSupplierIndex + 1} wins the contract at $${currentBid}`;
+                finalWinner = `Supplier ${lastSupplierIndex + 1}`;
             } else {
                 result.textContent = `You withdrew ❌`;
                 AIresult.textContent = `No supplier submitted a bid. No one wins.`;
+                finalWinner = "No Winner";
             }
 
             profit.textContent = `Your profit: $0`;
-            return;
-        }
-
-
-        result.textContent = `${lastBidder} won the contract ✅`;
-
-        if (lastBidder === "You") {
-            const playerProfit = currentBid - cost;
-            if (playerProfit < 0) {
-                AIresult.textContent = "But you lost profit ❌";
-            } else {
-                AIresult.textContent = "Well done!";
-            }
-            profit.textContent = `Your profit: $${playerProfit}`;
+            finalProfit = 0;
         } else {
-            const winnerIndex = parseInt(lastBidder.split(" ")[1]);
-            AIresult.textContent = `Supplier ${winnerIndex} won at $${currentBid}`;
-            profit.textContent = `Your profit: $0`;
+            result.textContent = `${lastBidder} won the contract ✅`;
+
+            if (lastBidder === "You") {
+                playerBid = currentBid;
+                finalProfit = currentBid - cost;
+                finalWinner = "Player";
+
+                if (finalProfit < 0) {
+                    AIresult.textContent = "But you lost profit ❌";
+                } else {
+                    AIresult.textContent = "Well done!";
+                }
+
+                profit.textContent = `Your profit: $${finalProfit}`;
+            } else {
+                const winnerIndex = parseInt(lastBidder.split(" ")[1]);
+                finalWinner = `Supplier ${winnerIndex}`;
+                finalProfit = 0;
+
+                AIresult.textContent = `Supplier ${winnerIndex} won at $${currentBid}`;
+                profit.textContent = `Your profit: $0`;
+            }
         }
+        // Store game results
+        const gameResult = {
+            gameNumber: Date.now(), // temporary unique number
+            playerBid: playerBid || null, // might be null if withdrew
+            lowestBid: currentBid,
+            winner: finalWinner,
+            profit: finalProfit,
+            gameMode: "English Open Bid",
+            levelDifficulty: "Normal"
+        };
+
+        // Send result to backend
+        fetch("http://localhost:5000/api/games/save-result", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(gameResult)
+        })
+            .then(res => res.json())
+            .then(data => console.log("Game saved:", data))
+            .catch(err => console.error("Error saving game:", err));
     }
 
     function updateReputationMeter(percent) {
         const fill = document.getElementById("reputationFill");
-  
+
         fill.style.width = percent + "%";
         fill.textContent = percent + "%";
-  
+
         if (percent < 45) {
-        fill.style.backgroundColor = "crimson";
+            fill.style.backgroundColor = "crimson";
         } else if (percent <= 70) {
-        fill.style.backgroundColor = "goldenrod";
+            fill.style.backgroundColor = "goldenrod";
         } else {
-        fill.style.backgroundColor = "seagreen";
+            fill.style.backgroundColor = "seagreen";
         }
     }
 

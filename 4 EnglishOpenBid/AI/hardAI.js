@@ -1,6 +1,6 @@
 window.onload = function () {
     const cost = Math.floor(Math.random() * 40) + 40;
-    const suppliers = Math.floor(Math.random() * 7) + 10; 
+    const suppliers = Math.floor(Math.random() * 6) + 4;
 
     const reputation = Math.floor(Math.random() * 69) + 30;
     updateReputationMeter(reputation);
@@ -19,7 +19,7 @@ window.onload = function () {
     const importantInfo = document.getElementById("important-information");
 
     if (reputation >= 70) {
-    importantInfo.textContent = `The buyer's reputation is ${reputation}%. 
+        importantInfo.textContent = `The buyer's reputation is ${reputation}%. 
     Suppliers are highly motivated and will bid competitively, sensing strong value and trust in the buyer. Bid Carefully`;
     }
     else if (reputation >= 45) {
@@ -59,18 +59,18 @@ window.onload = function () {
         const knownRelation = Math.random() > 0.25;
         let trust;
 
-        if(knownRelation){
-            if(reputation >= 70){
+        if (knownRelation) {
+            if (reputation >= 70) {
                 trust = Math.floor(Math.random() * 66) + 30;
                 relationshipStrengths[i] = trust;
                 trustFill.style.width = trust + "%";
             }
-            else if(reputation >= 45){
+            else if (reputation >= 45) {
                 trust = Math.floor(Math.random() * 60) + 27;
                 relationshipStrengths[i] = trust;
                 trustFill.style.width = trust + "%";
             }
-            else{
+            else {
                 trust = Math.floor(Math.random() * 70) + 10;
                 relationshipStrengths[i] = trust;
                 trustFill.style.width = trust + "%";
@@ -79,15 +79,15 @@ window.onload = function () {
             if (trust < 45) {
                 trustFill.style.backgroundColor = "crimson";
 
-                }
+            }
             else if (trust < 70) {
                 trustFill.style.backgroundColor = "goldenrod";
-                }
+            }
             else {
                 trustFill.style.backgroundColor = "limegreen";
             }
         }
-        else{
+        else {
             trustFill.classList.add("unknown");
             trustFill.textContent = "Unknown";
         }
@@ -99,18 +99,18 @@ window.onload = function () {
         AIBidSection.appendChild(container);
         SupplierElements.push(status);
     }
-        let dotIntervals = [];
+    let dotIntervals = [];
 
-        SupplierElements.forEach((el, i) => {
-            const span = el.querySelector(".dots");
-            let dotCount = 1;
-        
-            const interval = setInterval(() => {
-                dotCount = (dotCount % 3) + 1;
-                const dots = ".".repeat(dotCount).padEnd(3, "\u00A0"); 
-                span.textContent = dots;
-            }, 500);
-    
+    SupplierElements.forEach((el, i) => {
+        const span = el.querySelector(".dots");
+        let dotCount = 1;
+
+        const interval = setInterval(() => {
+            dotCount = (dotCount % 3) + 1;
+            const dots = ".".repeat(dotCount).padEnd(3, "\u00A0");
+            span.textContent = dots;
+        }, 500);
+
         dotIntervals.push(interval);
     });
 
@@ -139,56 +139,56 @@ window.onload = function () {
         let supplierTrust = relationshipStrengths[index];
         let supplierStatus;
         //case high reputation
-        if(reputation >= 70){
-            if(supplierTrust >=70 || supplierTrust >=45){
+        if (reputation >= 70) {
+            if (supplierTrust >= 70 || supplierTrust >= 45) {
                 supplierStatus = "competitive";
             }
-            else{
+            else {
                 supplierStatus = "notInterested";
             }
         }
         //case normal reputation
-        else if(reputation >= 45){
-            if(supplierTrust >=70){
+        else if (reputation >= 45) {
+            if (supplierTrust >= 70) {
                 supplierStatus = "competitive";
             }
-            else if (supplierTrust >= 45){
+            else if (supplierTrust >= 45) {
                 supplierStatus = "normal";
             }
-            else{
+            else {
                 supplierStatus = "notInterested";
             }
         }
         //case low reputation
-        else{
-            if(supplierTrust >=70){
+        else {
+            if (supplierTrust >= 70) {
                 supplierStatus = "competitive";
             }
-            else{
+            else {
                 supplierStatus = "notInterested";
             }
         }
 
         let threshold;
         const minNextBid = currentBid - Math.floor(Math.random() * 3) - 5;
-        
-        if(supplierStatus == "competitive"){
+
+        if (supplierStatus == "competitive") {
             threshold = cost + Math.floor(Math.random() * 5) + 5;
         }
 
-        else if(supplierStatus == "normal"){
+        else if (supplierStatus == "normal") {
             threshold = cost + Math.floor(Math.random() * 10) + 10;
         }
 
         else if (supplierStatus == "notInterested") {
             threshold = cost + Math.floor(Math.random() * 10) + 15;
         }
-        else{
+        else {
             threshold = cost + Math.floor(Math.random() * 30) + 5;
         }
 
         if (minNextBid <= threshold) {
-            
+
             document.getElementById(`ai-status-${index}`).textContent = `Supplier ${index + 1} withdrew.`;
             activeSuppliers[index] = false;
 
@@ -196,7 +196,7 @@ window.onload = function () {
             supplierBids[index] = minNextBid;
             currentBid = minNextBid;
             lastBidder = `Supplier ${index + 1}`;
-            lastSupplierIndex = index; 
+            lastSupplierIndex = index;
             document.getElementById(`ai-status-${index}`).textContent = `Supplier ${index + 1} bids $${minNextBid}`;
         }
 
@@ -206,9 +206,9 @@ window.onload = function () {
 
     window.submitBid = function () {
         // No bidding if withdrawn
-        if (playerWithdrew){
+        if (playerWithdrew) {
             return;
-        } 
+        }
 
         errMsg.textContent = "";
         const bid = parseInt(playerBidInput.value);
@@ -240,7 +240,7 @@ window.onload = function () {
         submitBtn.disabled = true;
         withdrawBtn.disabled = true;
 
-        if(currentBid === null){
+        if (currentBid === null) {
             currentBid = cost + 150;
         }
 
@@ -251,9 +251,11 @@ window.onload = function () {
         withdrawBtn.disabled = true;
         submitBtn.disabled = true;
         playerBidInput.disabled = true;
+        let finalWinner;
+        let finalProfit;
+        let playerBid = 0;
 
         if (playerWithdrew) {
-
             SupplierElements.forEach((el, i) => {
                 if (i === lastSupplierIndex) {
                     el.textContent = `Supplier ${i + 1} bids $${supplierBids[i]}`;
@@ -262,49 +264,76 @@ window.onload = function () {
                 }
             });
 
-    
             if (lastSupplierIndex !== null && supplierBids[lastSupplierIndex] !== null) {
                 result.textContent = `You withdrew ❌`;
                 AIresult.textContent = `Supplier ${lastSupplierIndex + 1} wins the contract at $${currentBid}`;
+                finalWinner = `Supplier ${lastSupplierIndex + 1}`;
             } else {
                 result.textContent = `You withdrew ❌`;
                 AIresult.textContent = `No supplier submitted a bid. No one wins.`;
+                finalWinner = "No Winner";
             }
 
             profit.textContent = `Your profit: $0`;
-            return;
-        }
-
-
-        result.textContent = `${lastBidder} won the contract ✅`;
-
-        if (lastBidder === "You") {
-            const playerProfit = currentBid - cost;
-            if (playerProfit < 0) {
-                AIresult.textContent = "But you lost profit ❌";
-            } else {
-                AIresult.textContent = "Well done!";
-            }
-            profit.textContent = `Your profit: $${playerProfit}`;
+            finalProfit = 0;
         } else {
-            const winnerIndex = parseInt(lastBidder.split(" ")[1]);
-            AIresult.textContent = `Supplier ${winnerIndex} won at $${currentBid}`;
-            profit.textContent = `Your profit: $0`;
+            result.textContent = `${lastBidder} won the contract ✅`;
+
+            if (lastBidder === "You") {
+                playerBid = currentBid;
+                finalProfit = currentBid - cost;
+                finalWinner = "Player";
+
+                if (finalProfit < 0) {
+                    AIresult.textContent = "But you lost profit ❌";
+                } else {
+                    AIresult.textContent = "Well done!";
+                }
+
+                profit.textContent = `Your profit: $${finalProfit}`;
+            } else {
+                const winnerIndex = parseInt(lastBidder.split(" ")[1]);
+                finalWinner = `Supplier ${winnerIndex}`;
+                finalProfit = 0;
+
+                AIresult.textContent = `Supplier ${winnerIndex} won at $${currentBid}`;
+                profit.textContent = `Your profit: $0`;
+            }
         }
+        // Store game results
+        const gameResult = {
+            gameNumber: Date.now(), // temporary unique number
+            playerBid: playerBid || null, // might be null if withdrew
+            lowestBid: currentBid,
+            winner: finalWinner,
+            profit: finalProfit,
+            gameMode: "English Open Bid",
+            levelDifficulty: "Hard" 
+        };
+
+        // Send result to backend
+        fetch("http://localhost:5000/api/games/save-result", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(gameResult)
+        })
+            .then(res => res.json())
+            .then(data => console.log("Game saved:", data))
+            .catch(err => console.error("Error saving game:", err));
     }
 
     function updateReputationMeter(percent) {
         const fill = document.getElementById("reputationFill");
-  
+
         fill.style.width = percent + "%";
         fill.textContent = percent + "%";
-  
+
         if (percent < 45) {
-        fill.style.backgroundColor = "crimson";
+            fill.style.backgroundColor = "crimson";
         } else if (percent <= 70) {
-        fill.style.backgroundColor = "goldenrod";
+            fill.style.backgroundColor = "goldenrod";
         } else {
-        fill.style.backgroundColor = "seagreen";
+            fill.style.backgroundColor = "seagreen";
         }
     }
 
