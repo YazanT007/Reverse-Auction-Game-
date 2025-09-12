@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 const GameResultSchema = new mongoose.Schema({
-    gameNumber: Number,
+    sessionId: String,
     playerBid: Number,
     lowestBid: Number,
     winner: String,

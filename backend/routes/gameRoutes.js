@@ -11,17 +11,17 @@ router.get('/', (req, res) => {
 // SAVE GAME RESULT ROUTE
 router.post('/save-result', async (req, res) => {
     try {
-        const { gameNumber, playerBid, lowestBid, winner, profit, gameMode, levelDifficulty} = req.body;
+        const { sessionId, playerBid, lowestBid, winner, profit, gameMode, levelDifficulty} = req.body;
 
         const newResult = new GameResult({
-            gameNumber,
+            sessionId,
             playerBid,
             lowestBid,
             winner,
             profit,
             gameMode,
             levelDifficulty,
-            date: new Date()
+            timestamp: new Date() 
         });
 
         await newResult.save();
@@ -29,6 +29,16 @@ router.post('/save-result', async (req, res) => {
     } catch (error) {
         console.error('Error saving game result:', error);
         res.status(500).json({ message: 'Server error' });
+    }
+});
+
+// Get results for a session
+router.get("/results/:sessionId", async (req, res) => {
+    try {
+        const results = await GameResult.find({ sessionId: req.params.sessionId });
+        res.json(results);
+    } catch (err) {
+        res.status(500).json({ error: err.message });
     }
 });
 
