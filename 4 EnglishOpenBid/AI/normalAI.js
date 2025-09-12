@@ -1,3 +1,12 @@
+// Make sure a sessionId exists in localStorage
+if (!localStorage.getItem("sessionId")) {
+    const newSessionId = "session_" + Date.now() + "_" + Math.floor(Math.random() * 10000);
+    localStorage.setItem("sessionId", newSessionId);
+}
+
+// Retrieve sessionId
+const sessionId = localStorage.getItem("sessionId");
+
 window.onload = function () {
     const cost = Math.floor(Math.random() * 40) + 70;
     const suppliers = Math.floor(Math.random() * 6) + 4;
@@ -214,7 +223,7 @@ window.onload = function () {
         }
         // Store game results
         const gameResult = {
-            gameNumber: Date.now(), // temporary unique number
+            sessionId: sessionId,
             playerBid: playerBid || null, // might be null if withdrew
             lowestBid: currentBid,
             winner: finalWinner,
