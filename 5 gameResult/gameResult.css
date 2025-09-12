@@ -1,0 +1,70 @@
+body {
+    font-family: 'Courier New', Courier, monospace;
+    background-image: url(../zimages/webBackground.jpg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    transform: scale(0.9);
+    transform-origin: top center;
+    overflow-y: scroll;
+    margin: 0;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+
+
+.container {
+    padding: 20px;
+    width: 90%;
+    max-width: 1100px;
+    border-radius: 8px;
+    box-shadow: 10px 10px 7px rgb(0, 0, 0);
+    background-color: #000000ca;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #ffffff;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+thead {
+    background: #41c1b2;
+    color: white;
+}
+
+th,
+td {
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+    text-align: center;
+    color: white;
+    font-weight: bold;
+}
+
+.back-btn {
+    display: block;
+    margin: 0 auto;
+    padding: 10px 20px;
+    background: #41c1b2;
+    color: black;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background 0.3s;
+}
+
+.back-btn:hover {
+    background: #41c2b3c1;
+}
