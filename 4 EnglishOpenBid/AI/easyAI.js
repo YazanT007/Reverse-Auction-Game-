@@ -147,6 +147,7 @@ window.onload = function () {
         let finalWinner;
         let finalProfit;
         let playerBid = 0;
+        let finalLowestBid;
 
         if (playerWithdrew) {
             SupplierElements.forEach((el, i) => {

@@ -282,7 +282,7 @@ window.onload = function () {
         let winningSupplier = AIBids.indexOf(lowestAIBid) + 1;
         let finalWinner;
         let finalProfit;
-        let playerBidding;
+        let finalLowestBid;
 
 
         if (playerWithdrew || playerBid === null) {
@@ -290,6 +290,7 @@ window.onload = function () {
             AIresult.textContent = `Supplier ${winningSupplier} Won With a Bid of $${lowestAIBid}`;
             finalWinner = `Supplier${winningSupplier}`;
             finalProfit = 0;
+            finalLowestBid = lowestAIBid;
         }
 
         else if (playerBid < cost) {
@@ -297,12 +298,14 @@ window.onload = function () {
             AIresult.textContent = "But You Lost Profit ❌"
             finalWinner = "Player";
             finalProfit = playerBid - cost;
+            finalLowestBid = playerBid;
         }
         else if (playerBid < lowestAIBid) {
             result.textContent = "You Won the Contract ✅";
             AIresult.textContent = `You outbid Supplier ${winningSupplier}`;
             finalWinner = "Player";
             finalProfit = playerBid - cost;
+            finalLowestBid = playerBid;
 
         }
 
@@ -311,6 +314,7 @@ window.onload = function () {
             AIresult.textContent = `Supplier ${winningSupplier} Won With a Bid of $${lowestAIBid}`;
             finalWinner = `Supplier ${winningSupplier}`;
             finalProfit = 0;
+            finalLowestBid = lowestAIBid;
         }
         profit.textContent = `Your Profit: $${finalProfit}`;
         submitBtn.disabled = true;
@@ -319,7 +323,7 @@ window.onload = function () {
         const gameResult = {
             sessionId: sessionId,
             playerBid: playerBid,
-            lowestBid: Math.min(...AIBids, playerBid),
+            lowestBid: finalLowestBid,
             winner: finalWinner,
             profit: finalProfit,
             gameMode: "Sealed Bid First Price",
