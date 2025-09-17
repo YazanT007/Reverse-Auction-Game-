@@ -6,6 +6,8 @@ if (!localStorage.getItem("sessionId")) {
 
 // Retrieve sessionId
 const sessionId = localStorage.getItem("sessionId");
+// Store current game URL
+localStorage.setItem('currentGameUrl', window.location.href);
 
 window.onload = function () {
     const cost = Math.floor(Math.random() * 40) + 70;

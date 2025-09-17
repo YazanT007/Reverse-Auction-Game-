@@ -32,3 +32,15 @@ fetch(`http://localhost:5000/api/games/results/${sessionId}`)
         }
     })
     .catch(err => console.error("Error fetching results:", err));
+
+    // Back button to navigate to the previous game page
+    const backBtn = document.getElementById('back-to-game');
+    backBtn.addEventListener('click', () => {
+        const gameUrl = localStorage.getItem('currentGameUrl');
+        if (gameUrl) {
+            window.location.href = gameUrl;
+        }
+        else {
+            window.history.back();
+        }
+    });
