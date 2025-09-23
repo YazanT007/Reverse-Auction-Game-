@@ -59,7 +59,7 @@ window.onload = function () {
         errMsg.textContent = "";
         playerBid = parseFloat(playerBidInput.value);
 
-        if (isNaN(playerBid)) {
+        if (isNaN(playerBid) || playerBid <=0) {
             errMsg.textContent = "Please Enter a Valid Number";
             return;
         }

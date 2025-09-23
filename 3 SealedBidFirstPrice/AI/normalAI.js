@@ -82,7 +82,7 @@ window.onload = function () {
         if (!playerWithdrew) {
             playerBid = parseInt(playerBidInput.value);
 
-            if (isNaN(playerBid) || playerBid === 0) {
+            if (isNaN(playerBid) || playerBid <=0) {
                 errMsg.textContent = "Please Enter a Valid Number";
                 return;
             }
