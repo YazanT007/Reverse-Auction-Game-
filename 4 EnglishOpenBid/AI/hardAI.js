@@ -11,7 +11,7 @@ localStorage.setItem('currentGameUrl', window.location.href);
 
 window.onload = function () {
     const cost = Math.floor(Math.random() * 40) + 40;
-    const suppliers = Math.floor(Math.random() * 6) + 4;
+    const suppliers = Math.floor(Math.random() * 4) + 5;
 
     const reputation = Math.floor(Math.random() * 69) + 30;
     updateReputationMeter(reputation);

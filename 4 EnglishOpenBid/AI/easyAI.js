@@ -11,7 +11,7 @@ localStorage.setItem('currentGameUrl', window.location.href);
 
 window.onload = function () {
     const cost = Math.floor(Math.random() * 100) + 150;
-    const suppliers = Math.floor(Math.random() * 4) + 4;
+    const suppliers = Math.floor(Math.random() * 3) + 4;
 
     document.getElementById("auction-cost").textContent = `Your cost to fulfill the contract is: $${cost}`;
     document.getElementById("auction-suppliers").textContent = `Number of suppliers you are competing with: ${suppliers}`;
