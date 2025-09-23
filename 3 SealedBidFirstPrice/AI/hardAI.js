@@ -175,7 +175,7 @@ window.onload = function () {
                     if (supplierTrust >= 70) {
                         supplierStatus = "competitive";
                     }
-                    else if (supplierTrust >= 45) {
+                    else if (70 > supplierTrust >= 45) {
                         supplierStatus = "normal";
                     }
                     else {
