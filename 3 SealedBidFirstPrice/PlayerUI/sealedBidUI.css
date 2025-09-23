@@ -65,6 +65,10 @@ h2 {
     box-shadow: 10px 10px 7px rgb(0, 0, 0);
 }
 
+.AI-bid-section p {
+    margin-bottom: 30px;
+}
+
 .auction-info-to-know {
     display: flex;
     justify-content: center;
@@ -167,11 +171,10 @@ h2 {
     justify-content: space-between;
     align-items: center;
     width: 100%;
-    margin: 5px 0px;
     gap: 10px;
 }
 
-.supplier-container p{
+.supplier-container p {
     flex: 1 1 auto;
 
 }

@@ -1,17 +1,17 @@
-body{
+body {
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     margin-bottom: 40px;
-    justify-content: center;  
-    align-items: center;      
+    justify-content: center;
+    align-items: center;
     flex-direction: column;
     height: 100vh;
-    font-family: 'Courier New', Courier, monospace; 
-    background-image: url(../../zimages/webBackground.jpg); 
+    font-family: 'Courier New', Courier, monospace;
+    background-image: url(../../zimages/webBackground.jpg);
     background-size: cover;
-    background-position: center; 
+    background-position: center;
     background-repeat: no-repeat;
     background-attachment: fixed;
-    margin: 0; 
+    margin: 0;
     font-weight: bold;
 }
 
@@ -23,64 +23,68 @@ hr {
     width: 100%;
 }
 
-h1{
+h1 {
     text-align: center;
     font-size: 2.5rem;
     text-shadow: 3px 3px 20px rgb(173, 173, 173);
     color: white;
 }
 
-h2{
+h2 {
     margin-bottom: 1px;
 }
 
-#errMsg{
+#errMsg {
     color: rgb(249, 46, 46);
 }
 
-.AuctionResult{
+.AuctionResult {
     border: solid 2px #4ce3d2;
     display: flex;
     flex-direction: column;
     width: 500px;
     text-align: center;
-    justify-content: center; 
+    justify-content: center;
     margin: 20px auto;
     padding: 10px;
     border-radius: 8px;
     box-shadow: 10px 10px 7px rgb(0, 0, 0);
 }
 
-.AI-bid-section{
+.AI-bid-section {
     border: solid 2px #4ce3d2;
     display: flex;
     flex-direction: column;
     width: 800px;
     text-align: center;
-    justify-content: center; 
+    justify-content: center;
     margin: 20px auto;
     padding: 10px;
     border-radius: 8px;
     box-shadow: 10px 10px 7px rgb(0, 0, 0);
 }
 
-.auction-info-to-know{
+.AI-bid-section p {
+    margin-bottom: 30px;
+}
+
+.auction-info-to-know {
     display: flex;
-    justify-content: center; 
-    gap: 15px; 
-    padding:20px; 
+    justify-content: center;
+    gap: 15px;
+    padding: 20px;
     margin: 10px auto;
     width: 900px;
 }
 
-.auction-info{
+.auction-info {
     position: relative;
     flex: 1;
     padding: 20px;
     border: solid 2px black;
     border-radius: 8px;
     text-align: center;
-    background: linear-gradient(to bottom right, #41c2b3c1,#f8f8f8);
+    background: linear-gradient(to bottom right, #41c2b3c1, #f8f8f8);
 
 }
 
@@ -90,7 +94,7 @@ h2{
     width: 1000px;
     color: white;
     text-align: center;
-    justify-content: center; 
+    justify-content: center;
     margin: 10px auto;
     padding: 20px;
     border-radius: 8px;
@@ -98,7 +102,7 @@ h2{
     background-color: #000000ca;
 }
 
-#player-bid{
+#player-bid {
     border-radius: 8px;
     border: solid;
     padding: 6px 10px;
@@ -106,35 +110,35 @@ h2{
     margin-left: 0px;
 }
 
-#player-bid:focus{
-   border-color: #4ce3d2;
+#player-bid:focus {
+    border-color: #4ce3d2;
 
 }
 
-#player-bid:disabled{
+#player-bid:disabled {
     background-color: rgb(145, 145, 145);
 }
 
-.players-buttons{
+.players-buttons {
     text-align: center;
 }
 
-.reputation-container{
+.reputation-container {
     width: 100%;
     margin: 20px auto;
 }
 
-.reputation-bar{
+.reputation-bar {
     max-width: 200px;
-    margin: 6px auto ;
+    margin: 6px auto;
     background-color: #eee;
     border-radius: 20px;
     overflow: hidden;
     height: 30px;
-    box-shadow: inset 0 0 5px rgba(0,0,0,0.1);
+    box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.1);
 }
 
-.reputation-fill{
+.reputation-fill {
     height: 100%;
     width: 0%;
     line-height: 30px;
@@ -150,13 +154,11 @@ h2{
     justify-content: space-between;
     align-items: center;
     width: 100%;
-    margin: 5px 0px;
     gap: 10px;
 }
 
-.supplier-container p{
+.supplier-container p {
     flex: 1 1 auto;
-
 }
 
 .trust-bar-container {
@@ -169,23 +171,23 @@ h2{
 }
 
 .trust-bar-fill {
-  height: 100%;
-  width: 0%;
-  transition: width 2s ease, background-color 0.5s ease;
+    height: 100%;
+    width: 0%;
+    transition: width 2s ease, background-color 0.5s ease;
 }
 
 .trust-bar-fill.unknown {
-  background-color: rgba(255, 255, 255, 0.704);
-  color: black;
-  text-align: center;
-  font-size: 12px;
-  font-weight: bold;
-  width: 100%;
+    background-color: rgba(255, 255, 255, 0.704);
+    color: black;
+    text-align: center;
+    font-size: 12px;
+    font-weight: bold;
+    width: 100%;
 }
 
 
-.btns{
-    text-decoration:none;
+.btns {
+    text-decoration: none;
     width: auto;
     border-radius: 8px;
     border: solid 1px;
@@ -195,16 +197,11 @@ h2{
     background-color: #4ce3d2;
     transition: background-color 0.2s ease;
     font-size: 15px;
-    font-weight:900;
+    font-weight: 900;
     color: black;
-    font-family: 'Courier New', Courier, monospace;     
+    font-family: 'Courier New', Courier, monospace;
 }
 
-.btns:hover{
+.btns:hover {
     background-color: #40b6a8;
 }
-
-
-
-
-
