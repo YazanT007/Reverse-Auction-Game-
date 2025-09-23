@@ -164,20 +164,25 @@ h2 {
 
 .supplier-container {
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-between;
     align-items: center;
     width: 100%;
     margin: 5px 0px;
+    gap: 10px;
+}
+
+.supplier-container p{
+    flex: 1 1 auto;
+
 }
 
 .trust-bar-container {
-
-    width: 100px;
+    flex: 0 0 100px;
     height: 16px;
     background-color: #444444bf;
     border-radius: 20px;
     overflow: hidden;
-    margin-left: 15px;
+    margin-right: 180px;
 }
 
 .trust-bar-fill {
