@@ -9,12 +9,14 @@ const sessionId = localStorage.getItem("sessionId");
 // Store current game URL
 localStorage.setItem('currentGameUrl', window.location.href);
 
+//Grabbing cost and supplier from player input
+const params = new URLSearchParams(window.location.search);
+const cost = parseInt(params.get("cost"));
+const suppliers = parseInt(params.get("suppliers"));
+
 window.onload = function () {
     const params = new URLSearchParams(window.location.search);
     const level = params.get("level") || "Hard";
-
-    const cost = Math.floor(Math.random() * 40) + 40;
-    const suppliers = Math.floor(Math.random() * 7) + 10;
 
     const reputation = Math.floor(Math.random() * 69) + 30;
     updateReputationMeter(reputation);
@@ -361,5 +363,10 @@ function updateReputationMeter(percent) {
 }
 
 window.restartGame = function () {
-    location.reload();
-}
+    const params = new URLSearchParams(window.location.search);
+    const mode = params.get("mode");
+    const level = params.get("level");
+
+    // Redirect back to setup page with same mode & level
+    window.location.href = `../../6 gameSetup/gameSetup.html?mode=${encodeURIComponent(mode)}&level=${encodeURIComponent(level)}`;
+};

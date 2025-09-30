@@ -9,10 +9,12 @@ const sessionId = localStorage.getItem("sessionId");
 // Store current game URL
 localStorage.setItem('currentGameUrl', window.location.href);
 
-window.onload = function () {
-    const cost = Math.floor(Math.random() * 100) + 150;
-    const suppliers = Math.floor(Math.random() * 3) + 4;
+//Grabbing cost and supplier from player input
+const params = new URLSearchParams(window.location.search);
+const cost = parseInt(params.get("cost"));
+const suppliers = parseInt(params.get("suppliers"));
 
+window.onload = function () {
     document.getElementById("auction-cost").textContent = `Your cost to fulfill the contract is: $${cost}`;
     document.getElementById("auction-suppliers").textContent = `Number of suppliers you are competing with: ${suppliers}`;
     document.getElementById("important-information").textContent = "In this open auction, suppliers will respond to your bid one after another. Try to win the contract without sacrificing your profit.";
@@ -204,7 +206,7 @@ window.onload = function () {
             winner: finalWinner,
             profit: finalProfit,
             gameMode: "English Open Bid",
-            levelDifficulty: "Easy" 
+            levelDifficulty: "Easy"
         };
 
         // Send result to backend
@@ -219,6 +221,11 @@ window.onload = function () {
     }
 
     window.restartGame = function () {
-        location.reload();
+        const params = new URLSearchParams(window.location.search);
+        const mode = params.get("mode");
+        const level = params.get("level");
+
+        // Redirect back to setup page with same mode & level
+        window.location.href = `../../6 gameSetup/gameSetup.html?mode=${encodeURIComponent(mode)}&level=${encodeURIComponent(level)}`;
     };
 };
