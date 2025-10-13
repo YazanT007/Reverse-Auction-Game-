@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sealed-Bid First-Price Auction</title>
     <link rel="stylesheet" href="sealedBidUI.css">
 </head>
+
 <body>
     <h1 id="title"></h1>
     <div class="auction-info-to-know">
@@ -34,13 +36,15 @@
         </div>
 
         <div class="player-bid-section">
-            <label for="player-bid">Enter Your Bid:</label><br>
-            <input type="number" id="player-bid" min="1" step="1" placeholder="Enter bid amount">
+            <label for="player-bid">Enter Your Bid:</label>
+            <input type="number" id="player-bid" min="1" step="1" placeholder="Enter bid amount"><br>
+            <p id="errMsg"></p>
             <button id="submit-bid" class="btns" onclick="submitBid()">Submit Bid</button>
-            <button id="withdraw" class="btns" onclick="withdraw()">Withdraw</button>
-            <p id="errMsg"></p><hr>
+            <button id="withdraw" class="btns" onclick="withdraw()">Withdraw</button><br>
+            <hr>
+
         </div>
-        
+
         <div class="AI-bid-section">
             <h2>Suppliers:</h2>
             <div id="AI-bidding-section"></div>
@@ -50,7 +54,8 @@
 
         <div class="AuctionResult">
             <h2>Auction Result:</h2>
-            <p id="result-text">The auction result will be displayed here once all suppliers have submitted their bids.</p>
+            <p id="result-text">The auction result will be displayed here once all suppliers have submitted their bids.
+            </p>
             <p id="AIWins"></p>
             <p id="profit"></p>
         </div>
@@ -66,4 +71,5 @@
     </div>
     <script src="sealedBidUI.js"></script>
 </body>
+
 </html>
