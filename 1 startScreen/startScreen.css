@@ -39,7 +39,7 @@ p{
 
 #startButton{
     font-family: 'Courier New', Courier, monospace;
-    width: auto;
+    width: 275px;
     text-shadow: 3px 3px 20px #4ce3d2;
     font-size: 2rem;
     padding: 8px 27px;
