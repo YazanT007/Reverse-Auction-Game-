@@ -1,0 +1,117 @@
+html, body {
+    height: 100%;
+    margin: 0;
+}
+
+body{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    font-family: 'Courier New', Courier, monospace; 
+    background-image: url(../zimages/webBackground.jpg); 
+    background-size: cover;
+    background-position: center; 
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    margin: 0; 
+    transform: scale(0.9); 
+}
+
+.tutorial-overlay {
+  position: fixed;
+  margin-top: -60px;
+  width: 95%;
+  height: 95%;
+  background-color: #111111;
+  border: 3px solid #4ce3d2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 20px;
+}
+
+.tutorial-content {
+  position: relative;
+  width: 90vw;          
+  height: 90vh;         
+  background: #111;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.media-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.tutorial-media {
+  width: 100%;
+  height: 100%;
+  border-radius: 10px;
+  object-fit: contain;
+  
+}
+
+.nav-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: #ffffff33;
+  color: white;
+  border: none;
+  font-size: 2rem;
+  padding: 10px 15px;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.nav-btn:hover {
+  background-color: #ffffff55;
+}
+
+#prevBtn {
+  left: -85px;
+}
+
+#nextBtn {
+  right: -85px;
+}
+
+.start-game-container {
+  position: fixed;
+  bottom: -30px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2000;
+  display: flex;
+  justify-content: center;
+
+}
+
+.start-btn {
+ font-family: 'Courier New', Courier, monospace;
+    width: 275px;
+    text-shadow: 3px 3px 20px #4ce3d2;
+    font-size: 2rem;
+    padding: 8px 27px;
+    cursor: pointer;
+    border: solid 3px #4ce3d2;
+    background-color: #fefefe00;
+    transition: background-color 0.2s ease;
+    font-weight: bold;
+    color: rgb(250, 250, 250);
+}
+
+.start-btn:hover{
+    background-color: #52d7c75b;
+}
+
