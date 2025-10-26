@@ -50,6 +50,16 @@ This game allows the player to act as one of the suppliers and experience differ
 
 ---
 
+## App Preview
+<img width="1552" height="766" alt="image" src="https://github.com/user-attachments/assets/a7b9dc2a-a09f-4b35-8fb8-103afbc0e197" />
+<img width="1629" height="797" alt="image" src="https://github.com/user-attachments/assets/fb2fa28f-3eae-40fa-92bf-2db886c32740" />
+<img width="1623" height="819" alt="image" src="https://github.com/user-attachments/assets/010539d4-249d-43b8-a3a3-0445daa874a0" />
+<img width="1660" height="735" alt="image" src="https://github.com/user-attachments/assets/f8372244-f57e-4311-8b51-0c44c784ba99" />
+<img width="1569" height="693" alt="image" src="https://github.com/user-attachments/assets/b545cc11-4aaf-4cf0-bf61-6e036f2f402d" />
+<img width="1566" height="455" alt="image" src="https://github.com/user-attachments/assets/da531ca0-74ab-4efa-a50e-a1790a5ebed7" />
+
+---
+
 ## Live Demo  
 A link for the full game will be published soon
 
