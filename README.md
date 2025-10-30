@@ -68,6 +68,6 @@ A link for the full game will be published soon
 ## Author
 **Yazan El-Taha**
   
-  Software Engineering Student – Capstone Project
+  Software Engineering – Capstone Project
   
   Developed with HTML, CSS, JavaScript, Node.js, Express.js, and MongoDB.
